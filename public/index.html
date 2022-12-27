@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <link rel="icon" href="./img/favicon.png">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <div class="centered-form ">
+        <div class="centered-form__box">
+            <h1>Join</h1>
+            <form action="./chat.html">
+                <label>Display name</label>
+                <input type="text" name="username" placeholder="Display name" required>
+                
+                <div id="dropdown-rooms-list">
+                    <Label for="rooms">Select a room:</Label>
+                    <select name="room" id="room-name-select" onchange="handleSelectChange()"></select>
+                    <label id="or">or</label>
+                </div>
+                <label>Enter room name:</label>
+                <input id="room-name-input" type="text" name="room" placeholder="Room name" oninput="handleInputchange()">
+                <button>Join</button>
+            </form>
+        </div>
+    </div>
+    <script id="rooms-list-template" type="text/html">
+        <option value="">--Please choose a room--</option>        
+        {{#roomsList}}
+            <option value={{roomId}}>{{roomId}}</option>
+        {{/roomsList}}       
+    </script>
+    <script src="./js/mustache.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./js/roomList.js"></script>
+    
+</body>
+</html>
